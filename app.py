@@ -5,11 +5,11 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
-# Server-Side Authoritative Inventory & Hardware Specs
+# Server-Side Authoritative Inventory & Hardware Specs for Noctua Tactical
 HARDWARE_CATALOG = {
-    "SENTRA-315": {
-        "sku": "SENTRA-315",
-        "name": "SENTRA-315 Flagship Monocular",
+    "NOCTUA-S315": {
+        "sku": "NOCTUA-S315",
+        "name": "Noctua S-315 Flagship Monocular",
         "sensor": "384x288 VOx Uncooled Focal Plane",
         "refresh_hz": 50,
         "lens": "15mm Germanium F1.0",
@@ -17,9 +17,9 @@ HARDWARE_CATALOG = {
         "base_price": 1249.00,
         "stock": 7
     },
-    "G215-RECON": {
-        "sku": "G215-RECON",
-        "name": "G215 Compact Recon Monocular",
+    "NOCTUA-G215": {
+        "sku": "NOCTUA-G215",
+        "name": "Noctua G-215 Recon Monocular",
         "sensor": "256x192 VOx Microbolometer",
         "refresh_hz": 50,
         "lens": "10mm Tactical Wide",
@@ -43,7 +43,7 @@ def get_telemetry():
         "status": "ARMED",
         "timestamp": int(time.time()),
         "encryption": "AES-256-GCM // TLS 1.3",
-        "node": "VANGUARD-OPS-NODE-01",
+        "node": "NOCTUA-OPS-NODE-01",
         "inventory": {
             k: {"stock": v["stock"], "price": v["base_price"]}
             for k, v in HARDWARE_CATALOG.items()
@@ -54,10 +54,10 @@ def get_telemetry():
 def calculate_manifest():
     """Server-side price verification so frontend state stays synced with backend."""
     data = request.get_json() or {}
-    sku = data.get("sku", "SENTRA-315")
+    sku = data.get("sku", "NOCTUA-S315")
     has_bump = bool(data.get("order_bump", False))
 
-    item = HARDWARE_CATALOG.get(sku, HARDWARE_CATALOG["SENTRA-315"])
+    item = HARDWARE_CATALOG.get(sku, HARDWARE_CATALOG["NOCTUA-S315"])
     total = item["base_price"] + (BUMP_PRICE if has_bump else 0.00)
 
     return jsonify({
@@ -76,16 +76,16 @@ def calculate_manifest():
 def authorize_order():
     """Receives PayPal capture payload from frontend, decrements stock, returns dispatch manifest."""
     data = request.get_json() or {}
-    sku = data.get("sku", "SENTRA-315")
+    sku = data.get("sku", "NOCTUA-S315")
     has_bump = bool(data.get("order_bump", False))
     payer_name = data.get("payer_name", "OPERATOR")
     paypal_order_id = data.get("paypal_order_id", "MANUAL-AUTH")
 
-    item = HARDWARE_CATALOG.get(sku, HARDWARE_CATALOG["SENTRA-315"])
+    item = HARDWARE_CATALOG.get(sku, HARDWARE_CATALOG["NOCTUA-S315"])
     if item["stock"] > 0:
         item["stock"] -= 1
 
-    dispatch_hash = f"VG-{uuid.uuid4().hex[:8].upper()}"
+    dispatch_hash = f"NC-{uuid.uuid4().hex[:8].upper()}"
     manifest = {
         "dispatch_id": dispatch_hash,
         "paypal_ref": paypal_order_id,

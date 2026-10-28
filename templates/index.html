@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VANGUARD OPTICS // MIL-SPEC THERMAL RECON SYSTEMS</title>
+    <title>NOCTUA TACTICAL // MIL-SPEC THERMAL RECON SYSTEMS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
@@ -18,14 +18,11 @@
             background-size: 100% 100%, 32px 32px, 32px 32px;
         }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
-        /* CRT Scanline Overlay on Viewfinder */
         .crt-overlay {
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             background-size: 100% 3px, 6px 100%;
         }
-        .hud-border {
-            position: relative;
-        }
+        .hud-border { position: relative; }
         .hud-border::before, .hud-border::after {
             content: '';
             position: absolute;
@@ -63,11 +60,11 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 border border-emerald-500/60 bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-bold text-sm">
-                    VG
+                    NC
                 </div>
                 <div>
-                    <div class="text-white font-bold tracking-widest text-sm uppercase">VANGUARD OPTICS</div>
-                    <div class="text-[10px] text-stone-500 tracking-wider">AUTONOMOUS PERIMETER DIVISION</div>
+                    <div class="text-white font-bold tracking-widest text-sm uppercase">NOCTUA TACTICAL</div>
+                    <div class="text-[10px] text-stone-500 tracking-wider">ADVANCED THERMAL DIVISION</div>
                 </div>
             </div>
             <div class="hidden md:flex items-center gap-6 text-xs text-stone-400">
@@ -90,11 +87,6 @@
             <div>
                 <label class="text-[11px] text-stone-400 block mb-1.5 uppercase">PayPal Live / Sandbox Client ID:</label>
                 <input type="text" id="cfg-client-id" value="sb" class="w-full bg-black border border-stone-800 px-3 py-2 text-xs text-emerald-400 focus:border-emerald-500 outline-none">
-                <p class="text-[10px] text-stone-500 mt-1">Keep as "sb" for Sandbox testing, or paste your Live PayPal Business Client ID.</p>
-            </div>
-            <div>
-                <label class="text-[11px] text-stone-400 block mb-1.5 uppercase">Custom Product Image Override (Optional URL):</label>
-                <input type="text" id="cfg-img-url" placeholder="https://... or /static/sentra315.png" class="w-full bg-black border border-stone-800 px-3 py-2 text-xs text-white focus:border-emerald-500 outline-none">
             </div>
             <div class="flex justify-end gap-3 pt-2">
                 <button onclick="toggleConfig()" class="border border-stone-700 text-stone-400 px-4 py-2 text-xs hover:bg-stone-900">CANCEL</button>
@@ -103,7 +95,7 @@
         </div>
     </div>
 
-    <!-- Dispatch Confirmation Modal (Triggered after Backend Order Authorization) -->
+    <!-- Dispatch Confirmation Modal -->
     <div id="dispatch-modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
         <div class="bg-stone-950 border-2 border-emerald-500 max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div class="text-emerald-400 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
@@ -111,7 +103,7 @@
                 ACQUISITION AUTHORIZED // DISPATCH LOCKED
             </div>
             <p class="text-xs text-stone-300 leading-relaxed">
-                Your hardware requisition has been verified and logged by the Vanguard Backend Node.
+                Your hardware requisition has been verified and logged by the Noctua Tactical Secure Node.
             </p>
             <div id="dispatch-manifest-box" class="bg-black border border-stone-800 p-4 text-xs space-y-1.5 text-stone-300"></div>
             <button onclick="document.getElementById('dispatch-modal').classList.add('hidden')" class="w-full bg-emerald-500 text-black font-bold py-2.5 text-xs uppercase tracking-widest hover:bg-emerald-400">
@@ -126,27 +118,26 @@
         <!-- Hero Section -->
         <section class="text-center max-w-4xl mx-auto space-y-6">
             <div class="inline-flex items-center gap-2 border border-emerald-500/30 bg-emerald-950/30 px-3 py-1 text-[11px] text-emerald-400 tracking-widest uppercase">
-                <span>// ZERO AMBIENT LIGHT REQUIRED</span>
+                <span>// NOCTURNAL OVERWATCH DOMINANCE</span>
                 <span class="text-stone-600">•</span>
-                <span>1,350M HEAT SIGNATURE LOCK</span>
+                <span>1,350M THERMAL LOCK</span>
             </div>
             <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white uppercase tracking-tight leading-[0.95]">
                 When The Grid Drops,<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-200 to-emerald-500">Own The Night.</span>
             </h1>
             <p class="text-xs sm:text-sm md:text-base text-stone-400 max-w-2xl mx-auto leading-relaxed">
-                Standard night vision requires infrared illuminators that broadcast your position like a flashlight to anyone else with nods. Vanguard uncooled VOx thermal optics passively read raw heat radiation through smoke, foliage, and pitch blackout at <strong class="text-white">50 frames per second</strong>.
+                Standard night vision requires active infrared illuminators that broadcast your position like a beacon. Noctua uncooled VOx thermal optics passively read raw heat radiation through total darkness, smoke, and foliage at <strong class="text-white">50 frames per second</strong>.
             </p>
         </section>
 
-        <!-- Primary Interactive Workspace: Left Simulator + Right Acquisition Terminal -->
+        <!-- Primary Workspace -->
         <section id="simulator-section" class="grid lg:grid-cols-12 gap-8 items-start">
 
-            <!-- Left Column (7 Cols): Live 50Hz Tactical Viewfinder Simulator -->
+            <!-- Left Column: Thermal Simulator -->
             <div class="lg:col-span-7 space-y-4">
                 <div class="border border-stone-800 bg-stone-950/90 p-4 sm:p-5 hud-border space-y-4">
                     
-                    <!-- Simulator Top Control Bar -->
                     <div class="flex flex-wrap justify-between items-center gap-2 border-b border-stone-800/80 pb-3">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
@@ -159,31 +150,26 @@
                         </div>
                     </div>
 
-                    <!-- Interactive HTML5 Thermal Canvas -->
                     <div class="relative w-full h-[360px] sm:h-[420px] bg-black border border-stone-800 overflow-hidden cursor-crosshair select-none" id="viewfinder-box">
                         <canvas id="thermalCanvas" class="w-full h-full block"></canvas>
                         <div class="crt-overlay absolute inset-0 pointer-events-none"></div>
 
-                        <!-- Top-Left HUD Overlay -->
                         <div class="absolute top-3 left-3 bg-black/75 border border-emerald-500/30 px-2.5 py-1.5 text-[10px] space-y-0.5 pointer-events-none">
-                            <div class="text-emerald-400 font-bold">OPTIC: <span id="hud-sku-label">SENTRA-315 (384×288)</span></div>
+                            <div class="text-emerald-400 font-bold">OPTIC: <span id="hud-sku-label">NOCTUA S-315 (384×288)</span></div>
                             <div class="text-stone-400">FRAME CLOCK: <span id="hz-display" class="text-white font-bold">50.0 Hz</span> // NUC: AUTO</div>
                         </div>
 
-                        <!-- Top-Right HUD Telemetry -->
                         <div class="absolute top-3 right-3 bg-black/75 border border-stone-800 px-2.5 py-1.5 text-[10px] text-right space-y-0.5 pointer-events-none">
                             <div class="text-amber-400 font-bold">MAX CORE: <span id="hud-temp">37.4°C</span></div>
                             <div class="text-stone-400">DIST: <span id="hud-dist">118M</span> // ZOOM: <span id="hud-zoom">2.0X</span></div>
                         </div>
 
-                        <!-- Bottom Instruction Bar -->
                         <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center bg-black/80 border border-stone-800/90 px-3 py-1.5 text-[10px] text-stone-400 pointer-events-none">
-                            <span>[TRACK MOUSE / TOUCH TO LOCK MOVING SIGNATURES]</span>
+                            <span>[TRACK MOUSE / TOUCH TO LOCK SIGNATURES]</span>
                             <span id="lock-status" class="text-emerald-400 font-bold">STANDBY SCAN</span>
                         </div>
                     </div>
 
-                    <!-- Refresh Rate Physics Comparison Controls -->
                     <div class="grid sm:grid-cols-2 gap-3 pt-1">
                         <button onclick="setRefreshRate(9)" id="btn-9hz" class="border border-stone-800 bg-black p-3 text-left transition hover:border-amber-500/50 group">
                             <div class="flex justify-between items-center">
@@ -196,7 +182,7 @@
 
                         <button onclick="setRefreshRate(50)" id="btn-50hz" class="border-2 border-emerald-500 bg-emerald-950/15 p-3 text-left transition">
                             <div class="flex justify-between items-center">
-                                <span class="text-[10px] text-emerald-400 uppercase tracking-wider font-bold">Vanguard Tactical Core</span>
+                                <span class="text-[10px] text-emerald-400 uppercase tracking-wider font-bold">Noctua Tactical Core</span>
                                 <span class="text-[10px] bg-emerald-500 text-black font-bold px-1.5 py-0.5">ACTIVE</span>
                             </div>
                             <div class="text-xs text-white font-bold mt-1">50Hz Real-Time Fluid Lock</div>
@@ -205,19 +191,19 @@
                     </div>
                 </div>
 
-                <!-- Live Backend Communication Terminal Log -->
+                <!-- Backend Telemetry Console -->
                 <div class="border border-stone-800 bg-black p-3.5 text-[11px] space-y-1.5">
                     <div class="flex justify-between items-center text-stone-500 border-b border-stone-900 pb-1.5">
-                        <span class="uppercase tracking-widest text-[10px] text-emerald-400 font-bold">// FLASK BACKEND TELEMETRY STREAM</span>
+                        <span class="uppercase tracking-widest text-[10px] text-emerald-400 font-bold">// NOCTUA BACKEND TELEMETRY STREAM</span>
                         <span id="api-ping" class="text-[10px] text-stone-500">PING: 12ms</span>
                     </div>
                     <div id="terminal-log" class="space-y-1 max-h-24 overflow-y-auto text-stone-400 font-mono text-[11px]">
-                        <div>> [SYS] Initializing Vanguard Optical HUD...</div>
+                        <div>> [SYS] Initializing Noctua Tactical Optical HUD...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column (5 Cols): Hardware Requisition & Live Synced Checkout -->
+            <!-- Right Column: Requisition Panel -->
             <div id="acquisition-panel" class="lg:col-span-5 border border-stone-800 bg-stone-950/95 p-5 sm:p-6 hud-border space-y-6">
                 
                 <div class="flex justify-between items-start border-b border-stone-800 pb-4">
@@ -231,11 +217,10 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Hardware Visual Preview Banner -->
                 <div class="bg-black border border-stone-800/90 p-3 flex items-center justify-between gap-4">
                     <div class="space-y-1">
                         <div id="spec-pill-sensor" class="text-[10px] text-emerald-400 font-bold uppercase">384x288 VOx Uncooled Focal Plane</div>
-                        <div id="spec-pill-name" class="text-sm font-bold text-white">SENTRA-315 Flagship Monocular</div>
+                        <div id="spec-pill-name" class="text-sm font-bold text-white">Noctua S-315 Flagship Monocular</div>
                         <div id="spec-pill-range" class="text-[11px] text-stone-400">Detection Range: <strong class="text-stone-200">1,350 Meters</strong> // IP67 Waterproof</div>
                     </div>
                     <div class="w-16 h-16 border border-emerald-500/30 bg-emerald-950/20 flex flex-col items-center justify-center shrink-0 text-center">
@@ -244,30 +229,28 @@
                     </div>
                 </div>
 
-                <!-- Tier Selector Cards (Synced with Flask /api/calculate) -->
+                <!-- Tier Selector Cards -->
                 <div class="space-y-3">
-                    <!-- Tier 1: SENTRA-315 -->
-                    <div id="card-sentra" onclick="selectHardwareTier('SENTRA-315')" class="border-2 border-emerald-500 bg-emerald-950/10 p-4 cursor-pointer transition relative">
+                    <div id="card-sentra" onclick="selectHardwareTier('NOCTUA-S315')" class="border-2 border-emerald-500 bg-emerald-950/10 p-4 cursor-pointer transition relative">
                         <div class="flex justify-between items-center">
                             <span class="text-[10px] bg-emerald-500 text-black font-bold px-2 py-0.5 uppercase">TIER 01 // LONG-RANGE OVERWATCH</span>
                             <span class="text-base font-bold text-emerald-400">$1,249.00</span>
                         </div>
-                        <div class="text-white font-bold text-sm mt-2">SENTRA-315 Flagship Thermal Monocular</div>
+                        <div class="text-white font-bold text-sm mt-2">Noctua S-315 Flagship Thermal Monocular</div>
                         <div class="text-stone-400 text-xs mt-1">384×288 High-Density VOx Sensor • 15mm Germanium Lens • 1,350m Target Lock</div>
                     </div>
 
-                    <!-- Tier 2: G215-RECON -->
-                    <div id="card-recon" onclick="selectHardwareTier('G215-RECON')" class="border border-stone-800 bg-black p-4 cursor-pointer hover:border-stone-600 transition relative">
+                    <div id="card-recon" onclick="selectHardwareTier('NOCTUA-G215')" class="border border-stone-800 bg-black p-4 cursor-pointer hover:border-stone-600 transition relative">
                         <div class="flex justify-between items-center">
                             <span class="text-[10px] bg-stone-800 text-stone-300 font-bold px-2 py-0.5 uppercase">TIER 02 // URBAN CQB RECON</span>
                             <span class="text-base font-bold text-stone-200">$599.00</span>
                         </div>
-                        <div class="text-white font-bold text-sm mt-2">G215 Compact Recon Monocular</div>
+                        <div class="text-white font-bold text-sm mt-2">Noctua G-215 Recon Monocular</div>
                         <div class="text-stone-400 text-xs mt-1">256×192 Microbolometer • Pocket-Sized 50Hz Refresh • 780m Perimeter Scan</div>
                     </div>
                 </div>
 
-                <!-- Tactical Order Bump -->
+                <!-- Order Bump -->
                 <div class="border border-amber-500/40 bg-amber-950/10 p-3.5">
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" id="bump-checkbox" onchange="syncStateWithBackend()" class="mt-1 w-4 h-4 accent-emerald-500">
@@ -283,14 +266,14 @@
                     </label>
                 </div>
 
-                <!-- Live Price Manifest Breakdown -->
+                <!-- Price Manifest -->
                 <div class="border-t border-stone-800 pt-4 space-y-2 text-xs">
                     <div class="flex justify-between text-stone-400">
                         <span>SELECTED HARDWARE:</span>
-                        <span id="summary-item-name" class="text-stone-200 font-bold">SENTRA-315 Flagship Monocular</span>
+                        <span id="summary-item-name" class="text-stone-200 font-bold">Noctua S-315 Flagship Monocular</span>
                     </div>
                     <div class="flex justify-between text-stone-400">
-                        <span>ENCRYPTED COURIER DISPATCH (DHL EXPRESS):</span>
+                        <span>SECURE COURIER DISPATCH:</span>
                         <span class="text-emerald-400 font-bold">INCLUDED ($0.00)</span>
                     </div>
                     <div class="flex justify-between items-baseline pt-2 border-t border-stone-900">
@@ -299,7 +282,6 @@
                     </div>
                 </div>
 
-                <!-- PayPal Smart Button Container -->
                 <div class="pt-1 space-y-2">
                     <div id="paypal-button-container" class="w-full min-h-[48px]"></div>
                     <div class="text-[10px] text-center text-stone-500 flex items-center justify-center gap-2">
@@ -322,8 +304,8 @@
                     <thead>
                         <tr class="border-b border-stone-800 text-stone-400 uppercase text-[10px]">
                             <th class="py-3 pr-4">Parameter</th>
-                            <th class="py-3 px-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/30">SENTRA-315 Flagship ($1,249)</th>
-                            <th class="py-3 px-4 text-stone-200">G215 Recon ($599)</th>
+                            <th class="py-3 px-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/30">Noctua S-315 ($1,249)</th>
+                            <th class="py-3 px-4 text-stone-200">Noctua G-215 ($599)</th>
                             <th class="py-3 pl-4 text-stone-500">Cheap Digital IR / 9Hz Clones</th>
                         </tr>
                     </thead>
@@ -359,25 +341,21 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-stone-900 bg-black py-6 px-4 md:px-8 text-[11px] text-stone-600">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>VANGUARD OPTICS // OFF-GRID THERMAL DIVISION. ALL RIGHTS RESERVED.</div>
+            <div>NOCTUA TACTICAL // ADVANCED THERMAL SYSTEMS. ALL RIGHTS RESERVED.</div>
             <div class="text-stone-500">EXPORT NOTICE: ITAR / EAR COMPLIANT CIVILIAN TACTICAL HARDWARE</div>
         </div>
     </footer>
 
-    <!-- Full Frontend <-> Flask Backend Integration & Procedural Thermal Engine -->
     <script>
-        // Application State
-        let activeSKU = 'SENTRA-315';
+        let activeSKU = 'NOCTUA-S315';
         let currentPrice = 1249.00;
-        let currentItemName = 'SENTRA-315 Flagship Monocular';
+        let currentItemName = 'Noctua S-315 Flagship Monocular';
         let hasOrderBump = false;
         let refreshRate = 50;
         let colorPalette = 'phosphor';
 
-        // Log Helper for Backend Telemetry Console
         function logTelemetry(msg, highlight = false) {
             const box = document.getElementById('terminal-log');
             const line = document.createElement('div');
@@ -387,7 +365,6 @@
             box.prepend(line);
         }
 
-        // 1. Initial Handshake with Flask /api/telemetry
         async function fetchServerHeartbeat() {
             const start = performance.now();
             try {
@@ -403,23 +380,22 @@
             }
         }
 
-        // 2. Select Hardware Tier & Sync with Flask /api/calculate
         async function selectHardwareTier(sku) {
             activeSKU = sku;
             const sentraCard = document.getElementById('card-sentra');
             const reconCard = document.getElementById('card-recon');
 
-            if (sku === 'SENTRA-315') {
+            if (sku === 'NOCTUA-S315') {
                 sentraCard.className = 'border-2 border-emerald-500 bg-emerald-950/10 p-4 cursor-pointer transition relative';
                 reconCard.className = 'border border-stone-800 bg-black p-4 cursor-pointer hover:border-stone-600 transition relative';
                 document.getElementById('optic-badge-code').textContent = 'S-315';
-                document.getElementById('hud-sku-label').textContent = 'SENTRA-315 (384×288)';
+                document.getElementById('hud-sku-label').textContent = 'NOCTUA S-315 (384×288)';
                 document.getElementById('hud-zoom').textContent = '2.0X';
             } else {
                 reconCard.className = 'border-2 border-emerald-500 bg-emerald-950/10 p-4 cursor-pointer transition relative';
                 sentraCard.className = 'border border-stone-800 bg-black p-4 cursor-pointer hover:border-stone-600 transition relative';
                 document.getElementById('optic-badge-code').textContent = 'G-215';
-                document.getElementById('hud-sku-label').textContent = 'G215-RECON (256×192)';
+                document.getElementById('hud-sku-label').textContent = 'NOCTUA G-215 (256×192)';
                 document.getElementById('hud-zoom').textContent = '1.0X';
             }
             await syncStateWithBackend();
@@ -437,7 +413,6 @@
                 currentPrice = data.total;
                 currentItemName = data.name;
 
-                // Update UI from Authoritative Server Response
                 document.getElementById('display-total').textContent = data.formatted_total;
                 document.getElementById('summary-item-name').textContent = data.name + (data.has_bump ? ' + EMP Case' : '');
                 document.getElementById('spec-pill-sensor').textContent = data.sensor;
@@ -447,20 +422,17 @@
 
                 logTelemetry(`Synced SKU [${data.sku}] -> Total: ${data.formatted_total} (${data.stock_remaining} in vault)`);
             } catch (e) {
-                // Fallback calculation if offline
-                const base = activeSKU === 'SENTRA-315' ? 1249 : 599;
+                const base = activeSKU === 'NOCTUA-S315' ? 1249 : 599;
                 currentPrice = base + (hasOrderBump ? 88 : 0);
                 document.getElementById('display-total').textContent = '$' + currentPrice.toFixed(2);
             }
         }
 
-        // 3. Procedural Multi-Target Thermal Canvas Simulator
         const canvas = document.getElementById('thermalCanvas');
         const ctx = canvas.getContext('2d');
         let mouseX = 320, mouseY = 200;
         let reticleX = 320, reticleY = 200;
 
-        // Simulated Heat Targets (Patrolling Human Signatures + Warm Generator)
         const targets = [
             { x: 140, y: 230, vx: 0.65, type: 'human', temp: 37.2, label: ' ALPHA-01' },
             { x: 420, y: 255, vx: -0.45, type: 'human', temp: 36.9, label: ' BRAVO-02' },
@@ -492,8 +464,7 @@
 
         function setPalette(pal) {
             colorPalette = pal;
-            const palettes = ['phosphor', 'white', 'iron'];
-            palettes.forEach(p => {
+            ['phosphor', 'white', 'iron'].forEach(p => {
                 const btn = document.getElementById('pal-' + p);
                 if (p === pal) {
                     btn.className = 'px-2.5 py-1 bg-emerald-500 text-black font-bold text-[10px] tracking-wider uppercase transition';
@@ -538,11 +509,9 @@
                 lastFrameTime = timestamp;
                 const cols = getPaletteColors();
 
-                // In 9Hz mode, create ghosting smear by using partial alpha clear
                 ctx.fillStyle = refreshRate === 9 ? cols.bg + '88' : cols.bg;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // Draw Distant Treeline / Ridges
                 ctx.fillStyle = cols.terrain;
                 ctx.beginPath();
                 ctx.moveTo(0, canvas.height);
@@ -553,7 +522,6 @@
                 ctx.lineTo(canvas.width, canvas.height);
                 ctx.fill();
 
-                // Draw Tactical Grid
                 ctx.strokeStyle = cols.grid;
                 ctx.lineWidth = 1;
                 for (let x = 0; x < canvas.width; x += 40) {
@@ -563,20 +531,17 @@
                     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
                 }
 
-                // Interpolate Reticle Position
                 const ease = refreshRate === 50 ? 0.28 : 0.09;
                 reticleX += (mouseX - reticleX) * ease;
                 reticleY += (mouseY - reticleY) * ease;
 
                 let lockedTarget = null;
 
-                // Update & Render Thermal Signatures
                 targets.forEach(t => {
                     t.x += t.vx * (refreshRate === 50 ? 1 : 3.5);
                     if (t.x > canvas.width - 40) t.vx *= -1;
                     if (t.x < 40) t.vx *= -1;
 
-                    // Thermal Halo Glow
                     const grad = ctx.createRadialGradient(t.x, t.y, 2, t.x, t.y, 38);
                     grad.addColorStop(0, cols.hotCore);
                     grad.addColorStop(0.35, cols.hotMid);
@@ -586,18 +551,16 @@
                     ctx.arc(t.x, t.y, 38, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // Silhouette Core (Head + Torso for Human)
                     ctx.fillStyle = cols.hotCore;
                     if (t.type === 'human') {
                         ctx.beginPath();
-                        ctx.arc(t.x, t.y - 12, 4.5, 0, Math.PI * 2); // Head
+                        ctx.arc(t.x, t.y - 12, 4.5, 0, Math.PI * 2);
                         ctx.fill();
-                        ctx.fillRect(t.x - 5, t.y - 6, 10, 18); // Torso
+                        ctx.fillRect(t.x - 5, t.y - 6, 10, 18);
                     } else {
-                        ctx.fillRect(t.x - 10, t.y - 8, 20, 16); // Generator Box
+                        ctx.fillRect(t.x - 10, t.y - 8, 20, 16);
                     }
 
-                    // Check Distance to Reticle for Auto-Target Lock
                     const dist = Math.hypot(reticleX - t.x, reticleY - t.y);
                     if (dist < 48) {
                         lockedTarget = t;
@@ -610,7 +573,6 @@
                     }
                 });
 
-                // Update HUD Readouts on Target Lock
                 const lockEl = document.getElementById('lock-status');
                 if (lockedTarget) {
                     lockEl.textContent = `LOCKED: ${lockedTarget.label} (${lockedTarget.temp}°C)`;
@@ -621,7 +583,6 @@
                     lockEl.className = 'text-emerald-400 font-bold';
                 }
 
-                // Draw Primary Ballistic Stadiametric Crosshair
                 ctx.strokeStyle = cols.hud;
                 ctx.lineWidth = 1;
                 ctx.beginPath();
@@ -631,14 +592,12 @@
                 ctx.moveTo(reticleX, reticleY + 6); ctx.lineTo(reticleX, reticleY + 28);
                 ctx.stroke();
 
-                // Center Dot
                 ctx.fillStyle = cols.hud;
                 ctx.fillRect(reticleX - 1, reticleY - 1, 2, 2);
             }
             requestAnimationFrame(renderSimulation);
         }
 
-        // 4. Operator Config Modal & PayPal Integration
         function toggleConfig() {
             document.getElementById('config-modal').classList.toggle('hidden');
         }
@@ -660,35 +619,21 @@
             container.innerHTML = '';
 
             paypal.Buttons({
-                style: {
-                    color: 'gold',
-                    shape: 'rect',
-                    label: 'pay',
-                    height: 48
-                },
+                style: { color: 'gold', shape: 'rect', label: 'pay', height: 48 },
                 createOrder: function(data, actions) {
                     const desc = `${currentItemName}${hasOrderBump ? ' + EMP Faraday Case' : ''}`;
                     logTelemetry(`Initiating PayPal Order: ${desc} ($${currentPrice.toFixed(2)})`);
                     return actions.order.create({
-                        purchase_units: [{
-                            description: desc,
-                            amount: { value: currentPrice.toFixed(2) }
-                        }]
+                        purchase_units: [{ description: desc, amount: { value: currentPrice.toFixed(2) } }]
                     });
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(async function(details) {
                         const payerName = details.payer?.name?.given_name || 'OPERATOR';
-                        // Notify Flask Backend to Authorize & Decrement Stock
                         const res = await fetch('/api/authorize-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                sku: activeSKU,
-                                order_bump: hasOrderBump,
-                                payer_name: payerName,
-                                paypal_order_id: data.orderID
-                            })
+                            body: JSON.stringify({ sku: activeSKU, order_bump: hasOrderBump, payer_name: payerName, paypal_order_id: data.orderID })
                         });
                         const authData = await res.json();
                         if (authData.success) {
@@ -710,7 +655,6 @@
             }).render('#paypal-button-container');
         }
 
-        // Boot Sequence
         window.addEventListener('DOMContentLoaded', () => {
             fetchServerHeartbeat();
             syncStateWithBackend();
