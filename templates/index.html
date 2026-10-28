@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANGUARD OPTICS // OFF-GRID THERMAL SYSTEMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body class="bg-stone-950 text-stone-300 font-mono antialiased selection:bg-green-500 selection:text-black">
+
+    <!-- Operator Config Panel Modal Trigger -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <button onclick="toggleConfig()" class="bg-stone-900 border border-green-500/40 text-green-400 px-3 py-1.5 rounded text-xs tracking-widest shadow-2xl hover:bg-green-500 hover:text-black transition">
+            [OPS-CFG]
+        </button>
+    </div>
+
+    <!-- Config Modal -->
+    <div id="config-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-stone-900 border border-green-500/40 max-w-md w-full p-6 rounded-lg space-y-4">
+            <h3 class="text-white text-sm font-bold tracking-widest uppercase">Operator Configuration Console</h3>
+            <div>
+                <label class="text-xs text-stone-400 block mb-1">PayPal Client ID (Live/Sandbox):</label>
+                <input type="text" id="cfg-client-id" value="sb" class="w-full bg-stone-950 border border-stone-800 rounded px-3 py-2 text-xs text-green-400 focus:border-green-500 outline-none">
+            </div>
+            <div>
+                <label class="text-xs text-stone-400 block mb-1">Active Selected SKU:</label>
+                <select id="cfg-sku" class="w-full bg-stone-950 border border-stone-800 rounded px-3 py-2 text-xs text-white outline-none">
+                    <option value="1249.00">SENTRA-315 Flagship ($1,249.00)</option>
+                    <option value="599.00">G215 Recon ($599.00)</option>
+                </select>
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="toggleConfig()" class="bg-stone-800 text-stone-300 px-4 py-2 rounded text-xs hover:bg-stone-700">Close</button>
+                <button onclick="saveConfig()" class="bg-green-500 text-black font-bold px-4 py-2 rounded text-xs hover:bg-green-400">Save & Reload SDK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="border-b border-green-500/20 py-4 px-6 flex justify-between items-center bg-stone-900/50 backdrop-blur-sm sticky top-0 z-40">
+        <div class="flex items-center gap-3">
+            <span class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+            <span class="text-xs font-bold tracking-widest text-stone-400">VANGUARD SECURE // SYS: ARMED</span>
+        </div>
+        <div class="text-xs tracking-widest text-green-500 border border-green-500/30 px-3 py-1 rounded">
+            ENC: 256-AES // 50HZ FLUID
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tight">
+                The Grid Will Fail.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Track In Total Darkness.</span>
+            </h1>
+            <p class="text-sm md:text-base text-stone-400 leading-relaxed">
+                Civilian infrastructure is vulnerable to rolling failures and EMP vectors. Equip your perimeter with tactical, zero-lag thermal hardware engineered for absolute situational awareness.
+            </p>
+        </div>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid lg:grid-cols-12 gap-10 items-start mb-20">
+            
+            <!-- Left Column: Interactive 50Hz Thermal Viewfinder Simulator -->
+            <div class="lg:col-span-7 border border-stone-800 bg-stone-900/80 p-4 rounded-xl relative overflow-hidden group">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-xs text-green-400 font-bold uppercase tracking-widest">[SIMULATOR: LIVE VIEWFINDER]</span>
+                    <div class="flex gap-1.5">
+                        <button onclick="setPalette('white')" class="px-2 py-0.5 bg-stone-800 text-[10px] text-white rounded border border-stone-700 hover:border-green-500">WHITE HOT</button>
+                        <button onclick="setPalette('iron')" class="px-2 py-0.5 bg-stone-800 text-[10px] text-orange-400 rounded border border-stone-700 hover:border-orange-500">IRONBOW</button>
+                        <button onclick="setPalette('phosphor')" class="px-2 py-0.5 bg-stone-800 text-[10px] text-green-400 rounded border border-stone-700 hover:border-green-500">PHOSPHOR</button>
+                    </div>
+                </div>
+
+                <!-- Canvas Viewfinder -->
+                <div class="relative w-full h-80 bg-black rounded border border-stone-800 overflow-hidden cursor-crosshair" id="viewfinder-container">
+                    <canvas id="thermalCanvas" class="w-full h-full block"></canvas>
+                    <div class="absolute top-3 left-3 bg-black/70 border border-green-500/30 px-2 py-1 text-[10px] text-green-400 pointer-events-none">
+                        TARGET: 37.2°C // DIST: 42M // <span id="hz-display">50Hz</span>
+                    </div>
+                    <div class="absolute bottom-3 right-3 bg-black/70 border border-stone-800 px-2 py-1 text-[10px] text-stone-400 pointer-events-none">
+                        MOVE MOUSE TO SCAN PERIMETER
+                    </div>
+                </div>
+
+                <!-- 9Hz vs 50Hz Mode Toggle -->
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <button onclick="setRefreshRate(9)" id="btn-9hz" class="bg-stone-950 border border-stone-800 p-2.5 rounded text-left transition hover:border-stone-600">
+                        <div class="text-[10px] text-stone-500 uppercase">Legacy Standard</div>
+                        <div class="text-xs text-stone-300 font-bold">9Hz Civilian (Choppy Lag)</div>
+                    </button>
+                    <button onclick="setRefreshRate(50)" id="btn-50hz" class="bg-stone-950 border border-green-500/50 p-2.5 rounded text-left transition bg-green-500/5">
+                        <div class="text-[10px] text-green-500 uppercase">Tactical Standard</div>
+                        <div class="text-xs text-green-400 font-bold">50Hz SENTRA (Fluid Track)</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Dual-Tier Product Selector & Checkout -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Product Tier Selection -->
+                <div class="border border-stone-800 bg-stone-900/80 p-5 rounded-xl space-y-4">
+                    <h2 class="text-xs font-bold text-white uppercase tracking-widest">Select Tactical Hardware Tier</h2>
+                    
+                    <div class="space-y-3">
+                        <!-- Option 1: SENTRA-315 -->
+                        <label class="block border border-green-500 bg-green-500/5 p-4 rounded-lg cursor-pointer relative">
+                            <input type="radio" name="sku-tier" value="1249.00" checked onclick="updateSKU('1249.00', 'SENTRA-315 Flagship (384x288 Sensor)', 1249)" class="absolute top-4 right-4 accent-green-500">
+                            <span class="text-[10px] text-green-400 font-bold uppercase">Flagship Standard</span>
+                            <div class="text-white font-bold text-base mt-0.5">SENTRA-315 Thermal Monocular</div>
+                            <div class="text-stone-400 text-xs mt-1">384×288 Pixel Sensor | 50Hz Fluid Track | 15mm Lens</div>
+                            <div class="text-green-400 font-bold text-sm mt-2">$1,249.00 USD</div>
+                        </label>
+
+                        <!-- Option 2: G215 Recon -->
+                        <label class="block border border-stone-800 bg-stone-950 p-4 rounded-lg cursor-pointer relative hover:border-stone-700">
+                            <input type="radio" name="sku-tier" value="599.00" onclick="updateSKU('599.00', 'G215 Recon Monocular (256x192 Sensor)', 599)" class="absolute top-4 right-4 accent-green-500">
+                            <span class="text-[10px] text-stone-500 font-bold uppercase">Compact Recon</span>
+                            <div class="text-white font-bold text-base mt-0.5">G215 Recon Monocular</div>
+                            <div class="text-stone-400 text-xs mt-1">256×192 Pixel Sensor | Lightweight Urban Carry</div>
+                            <div class="text-stone-300 font-bold text-sm mt-2">$599.00 USD</div>
+                        </label>
+                    </div>
+
+                    <!-- Order Bump: Faraday Hard Case -->
+                    <div class="border border-stone-800 bg-stone-950 p-3 rounded-lg flex items-center justify-between">
+                        <label class="flex items-center gap-3 cursor-pointer text-xs text-stone-300">
+                            <input type="checkbox" id="bump-checkbox" onchange="toggleOrderBump()" class="w-4 h-4 accent-green-500 rounded">
+                            <div>
+                                <span class="font-bold text-white block">EMP-Shielded Hard Case</span>
+                                <span class="text-[10px] text-stone-500">Military-grade waterproof drop protection (+ $88)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Price & Checkout Summary -->
+                    <div class="border-t border-stone-800 pt-4 flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] text-stone-500 uppercase block">Total Acquisition Cost</span>
+                            <span id="display-total" class="text-2xl font-bold text-white">$1,249.00</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-red-400 font-bold uppercase block">Stock Reserve</span>
+                            <span class="text-xs text-stone-400">9 Units Available</span>
+                        </div>
+                    </div>
+
+                    <!-- PayPal Smart Button Container -->
+                    <div id="paypal-button-container" class="w-full pt-2"></div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive Thermal Simulation Canvas Script & Checkout Logic -->
+    <script>
+        // State Variables
+        let currentPrice = 1249.00;
+        let currentItemName = "SENTRA-315 Flagship (384x288 Sensor)";
+        let baseItemPrice = 1249.00;
+        let hasOrderBump = false;
+        let refreshRate = 50;
+        let colorPalette = 'phosphor';
+
+        // Canvas Setup
+        const canvas = document.getElementById('thermalCanvas');
+        const ctx = canvas.getContext('2d');
+        let mouseX = 150, mouseY = 100;
+        let targetX = 150, targetY = 100;
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = 320;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        function setPalette(pal) { colorPalette = pal; }
+        function setRefreshRate(hz) {
+            refreshRate = hz;
+            document.getElementById('hz-display').innerText = hz + 'Hz';
+            if(hz === 50) {
+                document.getElementById('btn-50hz').className = "bg-stone-950 border border-green-500/50 p-2.5 rounded text-left transition bg-green-500/5";
+                document.getElementById('btn-9hz').className = "bg-stone-950 border border-stone-800 p-2.5 rounded text-left transition hover:border-stone-600";
+            } else {
+                document.getElementById('btn-9hz').className = "bg-stone-950 border border-yellow-500/50 p-2.5 rounded text-left transition bg-yellow-500/5";
+                document.getElementById('btn-50hz').className = "bg-stone-950 border border-stone-800 p-2.5 rounded text-left transition hover:border-stone-600";
+            }
+        }
+
+        function updateSKU(priceStr, name, base) {
+            baseItemPrice = parseFloat(base);
+            currentItemName = name;
+            recalculateTotal();
+        }
+
+        function toggleOrderBump() {
+            hasOrderBump = document.getElementById('bump-checkbox').checked;
+            recalculateTotal();
+        }
+
+        function recalculateTotal() {
+            currentPrice = baseItemPrice + (hasOrderBump ? 88.00 : 0.00);
+            document.getElementById('display-total').innerText = "$" + currentPrice.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
+
+        // Render Loop supporting 9Hz lag vs 50Hz fluid interpolation
+        let lastRender = 0;
+        function renderLoop(timestamp) {
+            const interval = 1000 / refreshRate;
+            if (timestamp - lastRender >= interval) {
+                lastRender = timestamp;
+                
+                // Smooth interpolation for 50Hz, step lag for 9Hz
+                const ease = refreshRate === 50 ? 0.2 : 0.05;
+                targetX += (mouseX - targetX) * ease;
+                targetY += (mouseY - targetY) * ease;
+
+                // Background fill based on palette
+                ctx.fillStyle = colorPalette === 'phosphor' ? '#020d04' : (colorPalette === 'iron' ? '#120802' : '#050505');
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw tactical grid lines
+                ctx.strokeStyle = colorPalette === 'phosphor' ? 'rgba(34, 197, 94, 0.08)' : 'rgba(255, 255, 255, 0.04)';
+                ctx.lineWidth = 1;
+                for(let x = 0; x < canvas.width; x += 30) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+                }
+                for(let y = 0; y < canvas.height; y += 30) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+                }
+
+                // Draw Heat Signature Target
+                const gradient = ctx.createRadialGradient(targetX, targetY, 2, targetX, targetY, 60);
+                if(colorPalette === 'phosphor') {
+                    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+                    gradient.addColorStop(0.3, 'rgba(34, 197, 94, 0.8)');
+                    gradient.addColorStop(1, 'transparent');
+                } else if(colorPalette === 'iron') {
+                    gradient.addColorStop(0, 'rgba(255, 255, 200, 0.9)');
+                    gradient.addColorStop(0.3, 'rgba(249, 115, 22, 0.8)');
+                    gradient.addColorStop(1, 'transparent');
+                } else {
+                    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+                    gradient.addColorStop(0.4, 'rgba(150, 150, 150, 0.6)');
+                    gradient.addColorStop(1, 'transparent');
+                }
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(targetX, targetY, 60, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Crosshairs
+                ctx.strokeStyle = colorPalette === 'phosphor' ? 'rgba(34, 197, 94, 0.5)' : 'rgba(255, 255, 255, 0.3)';
+                ctx.beginPath();
+                ctx.moveTo(targetX - 12, targetY); ctx.lineTo(targetX + 12, targetY);
+                ctx.moveTo(targetX, targetY - 12); ctx.lineTo(targetX, targetY + 12);
+                ctx.stroke();
+            }
+            requestAnimationFrame(renderLoop);
+        }
+        requestAnimationFrame(renderLoop);
+
+        // Operator Config Modal Logic
+        function toggleConfig() {
+            const modal = document.getElementById('config-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function saveConfig() {
+            const clientId = document.getElementById('cfg-client-id').value;
+            toggleConfig();
+            // Reload PayPal SDK script dynamically with new client id
+            document.querySelectorAll('script[src*="paypal.com/sdk"]').forEach(s => s.remove());
+            const script = document.createElement('script');
+            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
+            script.onload = () => renderPayPalButtons();
+            document.head.appendChild(script);
+        }
+
+        // Render PayPal Smart Buttons
+        function renderPayPalButtons() {
+            const container = document.getElementById('paypal-button-container');
+            container.innerHTML = '';
+            
+            paypal.Buttons({
+                style: {
+                    color: 'black',
+                    shape: 'rect',
+                    label: 'checkout',
+                    height: 48
+                },
+                createOrder: function(data, actions) {
+                    let desc = currentItemName + (hasOrderBump ? " + EMP Hard Case" : "");
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: desc,
+                            amount: {
+                                value: currentPrice.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Acquisition Authorized. Dispatch initiated for ' + details.payer.name.given_name);
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Initial PayPal render on load
+        setTimeout(renderPayPalButtons, 500);
+    </script>
+</body>
+</html>
